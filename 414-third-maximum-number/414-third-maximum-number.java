@@ -10,7 +10,7 @@ class Solution {
             arr[x++] = i;
         }
         Arrays.sort(arr); 
-        System.out.println(Arrays.toString(arr));
+        // System.out.println(Arrays.toString(arr));
         if(arr.length<3)
             return arr[arr.length-1];
         else if(s.size()<3)
