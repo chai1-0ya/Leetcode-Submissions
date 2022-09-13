@@ -25,6 +25,8 @@ class Solution {
         for (Map.Entry<Integer,Integer> me : mp.entrySet()){
             arr[me.getKey()-1] = me.getValue();
         }
+        s.clear();
+        mp.clear();
         return arr;
     }
 }
