@@ -9,20 +9,21 @@
  * }
  */
 class Solution {
-    
-    public ListNode reverse(ListNode head , ListNode ls){
+      ListNode piya = null;
+    public  void reverse(ListNode head , ListNode ls){
         if(head == null)
-            return ls;
+            return ;
         ListNode x = head.next;
         head.next = ls;
         ls = head;
         head = x;
-        return reverse(head,ls);
+        piya=ls;
+        reverse(head,ls);
     }
     
-    public ListNode reverseList(ListNode head) {
-        ListNode ls = null;
-        return reverse(head, ls);
-        // return ls;
+    public  ListNode reverseList(ListNode head) {
+       
+        reverse(head, piya);
+        return piya;
     }
 }
