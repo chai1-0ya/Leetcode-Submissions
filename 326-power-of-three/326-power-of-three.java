@@ -3,8 +3,8 @@ class Solution {
         if(n==0)
             return false;
         double a = (Math.log(n)/Math.log(3));
-        a = Math.round(a);
-        System.out.println(Math.pow(3,a));
+        a = (int) (a + 0.5);
+        // System.out.println(Math.pow(3,a));
         return Math.pow(3,a)==n;
     }
 }
