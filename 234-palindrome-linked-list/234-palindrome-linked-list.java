@@ -10,10 +10,9 @@
  */
 class Solution {
     
-    ListNode ln  = new ListNode(-1);
+    ListNode ln;
     
     public boolean isPalindrome(ListNode head) {
-        ln = ln.next;
         ln = head;
         return pal(head);
     }
@@ -22,8 +21,13 @@ class Solution {
         if(node==null){
             return true;
         }
+        // node = node.next;
         boolean ans = pal(node.next);
-        boolean check = (ln.val == node.val)? true : false; 
+        boolean check = true;
+        if(ln.val == node.val)
+            check = true;
+        else
+            check = false;
         ln = ln.next;
         return ans && check;
         
