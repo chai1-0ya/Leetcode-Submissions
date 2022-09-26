@@ -12,7 +12,9 @@ class Solution {
                 t = 1;
                 c = s.charAt(i);
             }
-            n = Math.max(t, n);
+            // n = Math.max(t, n);
+            if(t>n)
+                n = t;
         }
         return n;
     }
