@@ -12,8 +12,11 @@ class MyHashSet {
     }
     
     public void remove(int key) {
-        if(contains(key))
-            ll.remove(Integer.valueOf(key));
+        if(contains(key)){
+            // MyHashSet obj = new MyHashSet(key);
+            Object a = (Integer)key;
+            ll.remove(a);
+        }
     }
     
     public boolean contains(int key) {
