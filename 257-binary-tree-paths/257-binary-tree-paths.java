@@ -25,6 +25,7 @@ class Solution {
         if(root.left == null && root.right == null){
             // ss += Integer.toString(root.val);
             s.add(ss);
+            return;
         }
         ss += "->";
         xxx(root.left,ss);
