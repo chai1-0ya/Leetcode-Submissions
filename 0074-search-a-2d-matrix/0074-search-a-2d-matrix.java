@@ -4,7 +4,8 @@ class Solution {
     public boolean b_search(int[] arr, int start, int end, int t){
         if(start>end)
             return false;
-        int mid = start+(end-start) / 2;
+        int mid = (start+end) / 2;
+        // System.out.println(mid);
         if(arr[mid] == t)
             return true;
         if(t < arr[mid])
