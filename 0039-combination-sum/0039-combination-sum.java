@@ -3,8 +3,6 @@ class Solution {
     List<List<Integer>> ll = new ArrayList<>();
     
     public void sum(int[] arr, int i, int t, List<Integer> ls){
-        // if(t<arr[i])
-        //     return ;
         if(i==arr.length){
             if(t == 0){
                 ll.add(new ArrayList<>(ls));
@@ -13,6 +11,10 @@ class Solution {
             }
             else 
                 return ;
+        }
+        if(t == 0){
+            ll.add(new ArrayList<Integer>(ls));
+            return;
         }
         if(t>=arr[i]){
             ls.add(arr[i]);
