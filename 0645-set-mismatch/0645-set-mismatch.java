@@ -4,7 +4,7 @@ class Solution {
         int[] ans = new int[2];
         for(int a : nums)
             arr[a]++;
-        for(int i=0;i<nums.length+1;i++){
+        for(int i=1;i<nums.length+1;i++){
             if(arr[i]==2)
                 ans[0] = i;
             if(arr[i]==0)
