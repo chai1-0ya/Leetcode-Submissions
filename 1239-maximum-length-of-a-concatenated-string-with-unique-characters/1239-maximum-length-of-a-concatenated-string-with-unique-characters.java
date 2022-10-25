@@ -1,22 +1,31 @@
 class Solution {
     
-    public int maxLength(List<String> A) {
-        List<Integer> dp = new ArrayList<>();
-        dp.add(0);
-        int res = 0;
-        for (String s : A) {
-            int a = 0, dup = 0;
-            for (char c : s.toCharArray()) {
-                dup |= a & (1 << (c - 'a'));
-                a |= 1 << (c - 'a');
-            }
-            if (dup > 0) continue;
-            for (int i = dp.size() - 1; i >= 0; --i) {
-                if ((dp.get(i) & a) > 0) continue;
-                dp.add(dp.get(i) | a);
-                res = Math.max(res, Integer.bitCount(dp.get(i) | a));
-            }
+    int l = 0;
+    String s = "";
+    
+    public boolean check(String s){
+        Set<Character> st = new HashSet<>();
+        for(int i=0;i<s.length();i++){
+            if(st.contains(s.charAt(i)))
+                return false;
+            st.add(s.charAt(i));
         }
-        return res;
+        return true;
+    }
+    
+    public void subs(List<String> arr, String s, int i){
+        if(check(s)==false)
+            return;
+        l = Math.max(l, s.length());
+        if(i==arr.size())
+            return;
+        subs(arr, s+arr.get(i), i+1);
+        subs(arr, s, i+1);
+    }
+    
+    public int maxLength(List<String> arr) {
+        // String s = "";
+        subs(arr, s, 0);
+        return l;
     }
 }
