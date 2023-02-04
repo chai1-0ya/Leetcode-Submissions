@@ -14,6 +14,7 @@ class Solution {
                 char c = s2.charAt(j);
                 if(!mp1.containsKey(c)){
                     i=j;
+                    mp2.clear();
                     break;
                 }
                 mp2.put(c, mp2.getOrDefault(c,0)+1);
