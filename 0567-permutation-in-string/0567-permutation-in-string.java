@@ -12,6 +12,10 @@ class Solution {
         for(int i=0;i<=m-n;i++){
             for(int j=i;j<i+n;j++){
                 char c = s2.charAt(j);
+                if(!mp1.containsKey(c)){
+                    i=j;
+                    break;
+                }
                 mp2.put(c, mp2.getOrDefault(c,0)+1);
             }
             // System.out.println(mp2);
