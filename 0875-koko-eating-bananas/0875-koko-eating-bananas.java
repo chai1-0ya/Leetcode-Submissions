@@ -1,6 +1,8 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int hour) {
         Arrays.sort(piles);
+        if(piles.length==hour)
+            return piles[piles.length-1];
         int l = 1, h = piles[piles.length-1];
         while(l<h){
             int mid = l + (h-l)/2;
