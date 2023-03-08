@@ -1,29 +1,25 @@
 class Solution {
-    // Can these buses finish 'totalTrips' of trips in 'givenTime'? 
-    public boolean timeEnough(int[] time, long givenTime, int totalTrips) {
-        long actualTrips = 0;
-        for (int t : time) 
-            actualTrips += givenTime / t;
-        return actualTrips >= totalTrips;
-    }
     
     public long minimumTime(int[] time, int totalTrips) {
-        // Initialize the left and right boundaries.
-        int max_time = 0;
-        for (int t : time) {
-            max_time = Math.max(max_time, t);
+        long l = 1;
+        long h = (long)10000000*totalTrips;
+        while(l<h){
+            long mid = (l + h)/2;
+            long count = trips(mid, time);
+            // System.out.println(mid+" "+count);
+            if(count<totalTrips)
+                l = mid+1;
+            else 
+                h = mid;
         }
-        long left = 1, right = (long) max_time * totalTrips;
-
-        // Binary search to find the minimum time to finish the task.
-        while (left < right) {
-            long mid = (left + right) / 2;
-            if (timeEnough(time, mid, totalTrips)) {
-                right = mid;
-            } else {
-                left = mid + 1;
-            }
+        return l;
+    }
+    
+    public long trips(long mid, int[] time){
+        long count = 0;
+        for(int i=0;i<time.length;i++){
+            count += mid/time[i];
         }
-        return left;
+        return count;
     }
 }
