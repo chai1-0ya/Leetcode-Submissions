@@ -24,12 +24,12 @@ class Solution {
             int n = q.size();
             List<Integer> l = new LinkedList<>();
             for(int i=0;i<n;i++){
-                TreeNode t = q.poll();
-                if(t.left!=null)
-                    q.add(t.left);
-                if(t.right!=null)
-                    q.add(t.right);
-                l.add(t.val);
+                TreeNode curr = q.poll();
+                if(curr.left!=null)
+                    q.add(curr.left);
+                if(curr.right!=null)
+                    q.add(curr.right);
+                l.add(curr.val);
             }
             ll.add(l);
         }
