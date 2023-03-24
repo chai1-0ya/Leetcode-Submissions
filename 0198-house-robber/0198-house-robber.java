@@ -4,7 +4,7 @@ class Solution {
         Arrays.fill(dp,-1);
         return func(0, 0, nums,dp);
     }
-    
+
     public int func(int i, int sum, int[] arr,int[] dp){
         if(i>=arr.length)
             return sum;
