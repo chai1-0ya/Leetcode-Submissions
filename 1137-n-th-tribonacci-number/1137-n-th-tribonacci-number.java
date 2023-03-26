@@ -1,12 +1,18 @@
 class Solution {
     public int tribonacci(int n) {
-        int[] a = new int[38];
-        a[0] = 0;
-        a[1] = 1;
-        a[2] = 1;
-        for(int i=3;i<38;i++){
-            a[i] = a[i-1]+a[i-2]+a[i-3];
-        }
-        return a[n];
+        int[] dp = new int[n+1];
+        return func(n,dp);
+    }
+    
+    public int func(int n, int[] dp){
+        if(dp[n]!=0)
+            return dp[n];
+        if(n==0)
+            return dp[n] = 0;
+        if(n==1)
+            return dp[n] = 1;
+        if(n==2)
+            return dp[n] = 1;
+        return dp[n] = func(n-1, dp)+func(n-2, dp)+func(n-3, dp);
     }
 }
