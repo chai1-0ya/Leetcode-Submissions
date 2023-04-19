@@ -16,31 +16,25 @@
 class Solution {
     
     int postIndex=0;
-    public TreeNode generate(int in[],int post[],int s, int e)
+    Map<Integer,Integer> mp;
+    public TreeNode generate(int post[],int s, int e)
     {
         if(s>e)
-            return(null);
-        
-        TreeNode root=new TreeNode(post[postIndex--]);
-        int inIndex=0;
-        for(int i=s;i<=e;i++)
-        {
-            if(in[i]==root.val)
-            {
-               inIndex=i;
-                break;
-            }
-        }
-              root.right=generate(in,post,inIndex+1,e);
-        root.left=generate(in,post,s,inIndex-1);
+            return null;
+        int t = post[postIndex--];
+        TreeNode root=new TreeNode(t);
+        root.right=generate(post,mp.get(t)+1,e);
+        root.left=generate(post,s,mp.get(t)-1);
   
-        return(root);
+        return root;
     }
+    
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        
-     postIndex=postorder.length-1;
-       // System.out.println(postIndex);
-    return(generate(inorder,postorder,0,postIndex));
+        mp = new HashMap<>();
+        for(int i=0;i<inorder.length;i++)
+            mp.put(inorder[i],i);
+        postIndex=postorder.length-1;
+        return generate(postorder,0,postIndex);
        
     }
 }
