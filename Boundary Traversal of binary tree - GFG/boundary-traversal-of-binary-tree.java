@@ -117,15 +117,15 @@ class Solution
 	}
     
      void left(Node cur, ArrayList<Integer> ans){
-         Node root =cur;
-		while(root != null){
-			if(!isleaf(root))
-				ans.add(root.data);
-			if(root.left != null)
-				root = root.left;
-			else
-				root = root.right;
-		}
+        if(cur==null)
+            return;
+        if(isleaf(cur)) 
+            return;
+        ans.add(cur.data);
+        if(cur.left != null)
+			left(cur.left, ans);
+		else if(cur.right!=null)
+			left(cur.right, ans);
 	}
 
 	 void leaf(Node root, ArrayList<Integer> ans){
