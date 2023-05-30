@@ -1,26 +1,21 @@
 class MyHashSet {
-
-    LinkedList<Integer> ll;
     
+    int[] set;
+
     public MyHashSet() {
-        ll = new LinkedList<>();
+        set = new int[1000001];
     }
     
     public void add(int key) {
-        if(!contains(key))
-            ll.add(key);
+        set[key] = 1;
     }
     
     public void remove(int key) {
-        if(contains(key)){
-            // MyHashSet obj = new MyHashSet(key);
-            Object a = (Integer)key;
-            ll.remove(a);
-        }
+        set[key] = 0;
     }
     
     public boolean contains(int key) {
-        return ll.contains(key);
+        return set[key]==1;
     }
 }
 
