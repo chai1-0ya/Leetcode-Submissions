@@ -23,23 +23,16 @@ class Solution {
         q.add(new Pair(i,j));
         while(!q.isEmpty()){
             Pair p = q.poll();
-            int x = p.first, y = p.second;
-            if(isValid(x-1,y,n,m) && grid[x-1][y]==0) ans++;
-            if(isValid(x+1,y,n,m) && grid[x+1][y]==0) ans++;
-            if(isValid(x,y-1,n,m) && grid[x][y-1]==0) ans++;
-            if(isValid(x,y+1,n,m) && grid[x][y+1]==0) ans++;
-            if(!isValid(x-1,y,n,m)) ans++;
-            if(!isValid(x+1,y,n,m)) ans++;
-            if(!isValid(x,y-1,n,m)) ans++;
-            if(!isValid(x,y+1,n,m)) ans++;
-            // ans++;
+            for(int[] temp:mov){
+                int x=p.first+temp[0], y=p.second+temp[1];
+                if(isValid(x,y,n,m) && grid[x][y]==0) ans++;
+                if(!isValid(x,y,n,m)) ans++;
+            }
             for(int[] temp : mov){
-                x = p.first+temp[0]; 
-                y = p.second+temp[1];
+                int x = p.first+temp[0], y = p.second+temp[1];
                 if(isValid(x,y,n,m) && vis[x][y]==0 && grid[x][y]==1){
                     q.add(new Pair(x,y));
                     vis[x][y] = 1;
-                    // ans++;
                 }
             }
         }
