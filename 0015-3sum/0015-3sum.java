@@ -1,27 +1,26 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        
-        List<List<Integer>> res= new LinkedList<>();
-        
-        for(int i=0;i<nums.length-2;i++){
-            if(i==0 || (i>0 && nums[i]!=nums[i-1])){
-                int lo=i+1,hi=nums.length-1,sum=0-nums[i];
-                
-                while(lo<hi){
-                    if(nums[lo]+nums[hi]==sum){
-                        res.add(Arrays.asList(nums[i],nums[lo],nums[hi]));
-                    
-                    while(lo<hi && nums[lo]==nums[lo+1])lo++;
-                    while(lo<hi && nums[hi]==nums[hi-1])hi--;
-                    lo++;
-                    hi--;
+        int n = nums.length;
+        Set<List<Integer>> s = new HashSet<>();
+        List<List<Integer>> ls = new ArrayList<>();
+        Map<Integer, Integer> mp = new HashMap<>();
+        for(int i=0;i<n;i++) mp.put(nums[i], i);
+        for(int i=0;i<n;i++){
+            int sum = 0-nums[i];
+            for(int j=0;j<n;j++){
+                List<Integer> l = new ArrayList<>();
+                int t = sum - nums[j];
+                // System.out.println(sum+" "+t);
+                if(i != j && mp.containsKey(t) && mp.get(t)!=j && mp.get(t)!=i){
+                    // System.out.println(nums[i]+" "+nums[j]+" "+t);
+                    l.add(nums[i]); l.add(nums[j]); l.add(t);
+                    Collections.sort(l);
+                    s.add(l);
                 }
-                    else if(nums[lo]+nums[hi]<sum) lo++;
-                    else
-                        hi--;
             }
         }
+        ls.addAll(s);
+        return ls;
     }
-        return res;
-}}
+}
