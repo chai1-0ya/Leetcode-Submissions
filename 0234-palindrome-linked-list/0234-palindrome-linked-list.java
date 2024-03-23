@@ -9,20 +9,22 @@
  * }
  */
 class Solution {
+    
+    ListNode ls;
+    
     public boolean isPalindrome(ListNode head) {
-        Stack<Integer> stc = new Stack<>();
-        ListNode temp = head;
-        while(temp != null){
-            stc.push(temp.val);
-            temp = temp.next;
+        ls = head;
+        return pal(head);
+    }
+    
+    public boolean pal(ListNode temp){
+        if(temp == null)
+            return true;
+        boolean ans = pal(temp.next);
+        if(ls.val==temp.val){
+            ls = ls.next;
+            return true&ans;
         }
-        temp = head;
-        while(temp != null){
-            if(temp.val != stc.peek())
-                return false;
-            temp = temp.next;
-            stc.pop();
-        }
-        return true;
+        else return false;
     }
 }
