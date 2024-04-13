@@ -11,6 +11,7 @@ class Solution {
             else {
                 t++;
                 j=i;
+                i++;
             }
         }
         return t;
